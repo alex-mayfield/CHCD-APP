@@ -1,0 +1,9 @@
+AuthType Basic
+AuthBasicProvider file
+AuthName "China Historical Christian Database"
+AuthUserFile "/home4/ccdataba/.htpasswds/public_html/passwd"
+Require valid-user
+
+<Files "index.html">
+  Require valid-user
+</Files>

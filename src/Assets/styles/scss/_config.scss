@@ -1,0 +1,158 @@
+//IMPORTS
+@import url('https://fonts.googleapis.com/css?family=Crete+Round:400,400i|Open+Sans:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,700|Noto+Serif+TC:400,700');
+
+//FONT VARIABLES
+$sans: 'Open Sans', sans-serif;
+$serif: 'Crete Round', serif;
+
+//COLOR VARIABLES
+$black: #010000;
+$white: #ffffff;
+$lightgray: #fafaf8;
+$midgray: #d4dadc;
+$darkgray: #333333;
+$red: #ff1755;
+$darkred: #b44444;
+$tan: #f6c55e;
+
+
+//MIXINS
+@mixin translateY($e){
+  -webkit-transform: translateY($e);
+  -moz-transform: translateY($e);
+  transform: translateY($e);
+}
+
+@mixin translate($x, $y){
+  -webkit-transform: translate($x, $y);
+  -moz-transform: translate($x, $y);
+  transform: translate($x, $y);
+}
+
+@mixin transition($e){
+  -webkit-transition: $e;
+  -moz-transition: $e;
+  transition: $e;
+}
+
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+@mixin padding($top: 1.6, $right: 1.6, $bot: 1.6, $left: 1.6) {
+  padding: ($top * 10) + px ($right * 10) + px ($bot * 10) + px ($left * 10) + px;
+  padding: $top + rem $right + rem $bot + rem $left + rem;
+}
+
+@mixin margin($top: 1.6, $right: 1.6, $bot: 1.6, $left: 1.6) {
+  margin: ($top * 10) + px ($right * 10) + px ($bot * 10) + px ($left * 10) + px;
+  margin: $top + rem $right + rem $bot + rem $left + rem;
+}
+
+//HEADERS
+%header {
+  font-family: $serif;
+  font-weight: bold;
+  color: $darkred}
+h1 {@extend %header; @include font-size(5); @include margin(2,0,2,0);clear:both;}
+h2 {@extend %header; @include font-size(4); @include margin(2,0,2,0); color: $darkgray;clear:both;}
+h3 {@extend %header; @include font-size(3); @include margin(.5,0,.5,0);clear:both;}
+h4 {@extend %header; @include font-size(2); @include margin(.5,0,.5,0); color: $darkgray;clear:both;}
+h5 {@extend %header; @include font-size(1.75); @include margin(.5,2,.5,2); color: $darkgray;clear:both;
+  & a {color: $darkgray;
+    &:hover {color: $tan};
+  }}
+h6 {@extend %header; @include font-size(2); @include margin(2,2,.5,2); clear:both;}
+
+
+.active {color: $darkred !important};
+.popupbutton {
+  background:none!important;
+  border:2px solid $darkred;
+  color: $darkred;
+  @include padding(.5,.5,.5,.5);
+  @include margin(.5,0,0,0);
+  @include transition(.15s ease-in-out);
+  width: 100%;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {color: $tan; border:2px solid $tan;}}
+
+
+// CORE STRUCTURE AND STYLES
+html, body {
+  font-size: 62.5%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: $lightgray;
+}
+
+#root  {
+  width: inherit;
+  height: inherit;
+  background-color: $lightgray;
+}
+
+.fullPage  {
+  width: inherit;
+  position: absolute;
+  background-color: $midgray;
+  top: 8rem;
+  bottom: 0px;
+  p {font-family: $sans;}
+}
+
+.textPage {
+  display: block;
+  @include font-size(1.5);
+  float: left;
+  position: relative;
+  background-color: $lightgray;
+  clear: both;
+  @include padding(1,15,1,15);
+  p {font-family: $sans; @include margin(.5,0,1.5,0);}
+  li {font-family: $sans; }
+}
+
+
+
+.filterColumn {
+  display: block;
+  float:left;
+  width: 25rem;
+  radius: 3rem;
+  background-color: rgba(255,255,255, .75);
+  position: absolute;
+  z-index: 3000;
+  @include font-size(1.25)
+  @include margin(2,2,2,2);
+  p {font-family: $sans; @include margin(.5,0,.5,0);}
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+//LINKS
+a {
+  text-decoration: none;
+  color: $tan;
+  @include transition(.15s ease-in-out);
+  cursor: pointer;
+
+  &:hover {
+    color: $darkred;
+    text-decoration: none;
+    @include transition(.15s ease-in-out);
+  }
+
+
+
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>China Historical Christian Database</title>
+
+  </head>
+  <script>
+
+  window.popupPass = '';
+
+  function showPopup(e) {
+    window.popupPass = e;
+    var element = document.getElementById("hiddendata");
+    element.classList.toggle("dataPopup");
+  };
+  function pushPopup(e) {
+    window.popupPass = e.target.value;
+    var element = document.getElementById("hiddendata");
+    element.classList.toggle("dataPopup");
+  };
+
+
+  </script>
+
+  <body>
+    <div id="root"></div>
+    <!--
+      To begin the development, run `npm start` in this folder.
+      To create a production bundle, use `npm run build`.
+    -->
+  </body>
+</html>

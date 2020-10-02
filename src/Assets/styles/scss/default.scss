@@ -1,0 +1,534 @@
+@import "_config.scss";
+
+//GENERAL
+.divider {
+	display: block;
+  clear: both;
+  border-bottom: 2px solid #b44444;
+  height: 2px;
+  width: 100%;
+  margin: 3rem 0;
+}
+
+.bio-pic {
+	float: left;
+  height: 150px;
+  width: 150px;
+  margin: 1.25rem 1.25rem 1.25rem 0;
+  background-size: 150px;
+
+	&-eugenio {@extend .bio-pic; background-image: url("../../images/eugenio.jpg" );}
+	&-daryl {@extend .bio-pic; background-image: url("../../images/daryl.jpg" );}
+	&-alex {@extend .bio-pic; background-image: url("../../images/alex.jpg" );}
+}
+
+.bio-pic-small {
+	float: left;
+  height: 100px;
+  width: 100px;
+  background-size: 100px;
+	margin: .75rem .75rem 1.25rem 0;
+
+	&-david {@extend .bio-pic-small; background-image: url("../../images/david.jpg" );}
+	&-aaron {@extend .bio-pic-small; background-image: url("../../images/aaron.jpg" );}
+}
+
+
+.float-left {
+	float:left;
+	display: block;
+	h1,h2,h3,h4,h5,h6 {
+		clear: none;
+	}
+}
+.download {
+	background: #b44444;
+	border: 0;
+	color: #fff;
+	width: 100%;
+	padding: 1rem;
+	font-size: 1.5rem;
+	transition: ease .25s;
+	&:hover { background:#333333;}
+}
+
+//LEAFLET MARKERS
+.marker-cluster {
+	background-clip: padding-box;
+	border-radius: 20px;
+  div {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+    text-align: center;
+    border-radius: 15px;
+    font-family:$sans;}
+  span {line-height: 30px;}
+}
+.marker-cluster-small {
+	background-color: rgba(245,184,55, 0.8);
+  div {background-color: rgba(51,51,51, 1); color:$white;}
+}
+
+.marker-cluster-medium {
+	background-color: rgba(236,122,58, 0.8);
+  div {background-color: rgba(51,51,51, 1); color:$white;}
+}
+
+.marker-cluster-large{
+	background-color: rgba(192,68,68, 0.8);
+  div {background-color: rgba(51,51,51, 1); color:$white;}
+}
+
+//POPUP UP
+#hiddendata {display: none;}
+.dataPopup {
+  float:left;
+  @include font-size(1.5);
+  position: fixed;
+  top: 9rem;
+  left: 30rem;
+  right: 3rem;
+  bottom: 3rem;
+  background: $lightgray;
+  z-index: 7000 !important;
+  display: block !important;
+  overflow-y: scroll;
+  -moz-box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 3px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.15);
+}
+
+.data { @include padding(5,5,5,5); p {font-family: $sans;}}
+
+.forty {display: block; width:35%; float:left;}
+
+.sixty {display: block; width:60%; float:right;}
+
+.close {
+  display: block;
+  background: $lightgray;
+  border: 0;
+  background-image: url("../../images/close.png");
+  background-size: 2rem;
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
+  @include margin(1,0,0,1)
+  &:hover {
+    background-image: url("../../images/close_hover.png");
+    @include transition(.15s ease-in-out);
+  }
+}
+
+.set {
+  display: block;
+  background: $lightgray;
+  border: 0;
+  position: absolute;
+  font-family: $sans;
+  @include margin(1,0,0,4)
+	height: 2rem;
+  &:hover {
+    color: $darkred;
+    @include transition(.15s ease-in-out);
+  }
+}
+
+.goback {
+  display: block;
+  background: $lightgray;
+  border: 0;
+	float: left;
+  background-image: url("../../images/back1.png");
+  background-size: 1.25rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  @include margin(1.25,.5,0,0)
+  &:hover {
+    background-image: url("../../images/back1-hover.png");
+    @include transition(.15s ease-in-out);
+  }
+}
+
+.list {
+  @include padding(2,5,3,30);
+  background: $lightgray;
+  position: absolute;
+  top: 0; bottom: 0; right: 0; left: 0;
+  z-index: 2000;
+  p {font-family: $sans; @include font-size(1.5);}
+  }
+
+.genInf {
+  background: $darkred;
+  display: table;
+  color: $white;
+  width: 100%;
+  @include padding(1.5,1.5,1.5,1.5);
+  @include margin(0,0,1,0);
+  font-family: $sans;
+  @include font-size(1.25);
+  .itemColumn50 { display: table-cell; width: 50%; text-align: left;}
+}
+
+.itemCard {
+  background: $white;
+  display: table;
+  width: 100%;
+  @include padding(1.5,1.5,1.5,1.5);
+  @include margin(0,0,1,0);
+  font-family: $sans;
+  @include font-size(1.25);
+	.itemColumn10 { display: table-cell; width: 10%; text-align: left;}
+	.itemColumn {
+  	display: table-cell;
+  	width: 17.5%;
+  	text-align: left;
+  	button {
+    	background:none!important;
+    	color:$darkred;
+    	text-align: left;
+    	border:none;
+    	@include padding(0,0,0,0);
+    	font: inherit;
+    	cursor: pointer;
+    	&:hover {color: $tan};}
+    	a { color: $darkred;
+				&:hover {color: $tan;}
+			}
+		}
+}
+
+.itemCard-dark {
+  background: $darkgray;
+  color: $white;
+  display: table;
+  width: 100%;
+  @include padding(2,2,2,2);
+  @include margin(0,0,2,0);
+  font-family: $sans;
+  @include font-size(1.5);
+  .itemColumn10 { display: table-cell; width: 10%; text-align: left;}
+  .itemColumn {
+    display: table-cell;
+    width: 17.5%;
+    text-align: left;
+  }
+}
+
+//NETWORK MAP
+
+.network {
+  position: absolute !important;
+ 	left: 30rem;
+ 	right: 0rem;
+ 	bottom: 0rem;
+ 	top: 0rem;
+ 	position: absolute !important;
+}
+
+//MAP
+ .map {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  position: absolute !important;
+}
+
+.leaflet-control-attribution{ display: none;}
+
+.leaflet-popup-content {font-family: $sans;}
+
+.leaflet-control-scale-line {
+    border: 0px;
+    width: 3rem !important;
+    border-top: none;
+    line-height: 1.1;
+    padding: 2px 5px 2px;
+    @include font-size(1);
+    font-family: $sans;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: content-box;
+    background: transparent;
+}
+
+//FILTERS
+.entry {
+  width: 100%;
+  box-sizing: border-box;
+  @include padding(2,2,2,2);
+  float: left;
+  clear:both;
+  & input, select, button {
+    border: thin solid $darkgray;
+    border-radius: .5rem;
+    box-sizing: border-box;
+    display:block;
+    @include padding(1,1,1,1); width: 100%;}
+  & button {
+    @include margin(2,0,2,0);
+    color: $white;
+    background-color: $darkred;
+    &:hover {color: $lightgray; background-color: $darkgray; @include transition(.15s ease-in-out);}}
+  & select, & input {
+    background-color: white;
+    display: inline-block;
+    line-height: 1.5em;
+    @include padding(.5,3.5,.5,1);
+    margin: 0;
+    	-webkit-box-sizing: border-box;
+    	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+    	-webkit-appearance: none;
+    	-moz-appearance: none;
+  	background-image:linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+    background-position: calc(100% - 20px) calc(1em + 2px),calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+    background-size:5px 5px, 5px 5px, 1px 1.5em;
+    background-repeat: no-repeat;
+    &::-webkit-calendar-picker-indicator {display: none;}
+    &:focus {
+      background-image: linear-gradient(45deg, $darkred 50%, transparent 50%), linear-gradient(135deg, transparent 50%, $darkred 50%), linear-gradient(to right, $darkred, $darkred);
+      background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em,calc(100% - 2.5em) 0.5em;
+      background-size: 5px 5px, 5px 5px, 1px 1.5em;
+      background-repeat: no-repeat;
+      border-color: $darkred;
+      outline: 0;}
+    &:-moz-focusring {color: transparent; text-shadow: 0 0 0 #000;}
+  }
+}
+
+//DATE SLIDER
+.slider {
+  float:left;
+  clear: both;
+  box-sizing: border-box;
+  height: 6rem;
+  width: 100%;
+  @include padding(1,2,1,2);
+}
+
+.input-range {
+  position: relative;
+  top:3rem;
+  height: .5rem;
+  width: 100%;
+  font-family: $sans;
+
+  &__slider {
+    background: $darkred;
+    border: 1px solid $darkred;
+    border-radius: .3rem;
+    display: block;
+    height: 2.75rem;
+    width: 1rem;
+    margin-left: -.65rem;
+    margin-top: -2.5rem;
+    outline: none;
+    position: absolute;
+    top: 0;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    &:active { transform: scale(1.3); }
+    &:focus { box-shadow: 0 0 0 5px rgba(63, 81, 181, 0.2);}
+    &-container {transition: left 0.3s ease-out; }
+  }
+  &__label {
+    color: $darkgray;
+    @include font-size(1.25)
+    transform: translateZ(0);
+    font-family: $sans;
+    &--min, &--max { bottom: -3rem; position: absolute; }
+    &--min {left: 1.25rem; }
+    &--max {right: 2rem; }
+    &--value {
+      position: absolute;
+      @include font-size(.85);
+      font-weight: normal;
+			writing-mode: vertical-rl;
+			text-orientation: sideways;
+			left: 1.5rem;
+			top: -2.475em;
+      color: $darkred;
+    }
+    &-container { left: -50%; position: relative; }
+    &--max &-container { left: 75%; }
+  }
+  &__track {
+    background: $midgray;
+    border-radius: 0.3rem;
+    display: block;
+    height: 2rem;
+    position: relative;
+    transition: left 0.3s ease-out, width 0.3s ease-out;
+    &--background {
+      left: .25rem;
+      margin-top: -1rem;
+      background: $midgray;
+      position: absolute;
+      right: .25rem;
+      top: 50%; }
+
+    &--active {background: $darkgray; }
+  }
+}
+.input-range__slider-container:first-of-type span {
+	position: absolute;
+	@include font-size(.85);
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+	font-weight: normal;
+	left: -.9rem;
+	top:-1.175em;
+	color: $darkred;
+}
+//HEADER
+.logo {
+  position: absolute;
+  top: 50%; left: 2rem;
+  font-family: $sans;
+  color: $white;
+  font-weight: bold;
+  @include font-size(3)
+  @include translateY(-50%)
+	width: 200px;
+	height:46px;
+	background-size:200px 46px;
+	&.en {background-image: url("../../images/ccd-logo-small.png");}
+	&.zh {background-image: url("../../images/ccd-logo-zh-small.png")}
+	&.tw {background-image: url("../../images/ccd-logo-tw-small.png")}
+  }
+
+.langselect {
+  position: absolute;
+  width: 3rem;
+  height: 7.75rem;
+  top: 50%; right: 0;
+  background: $darkgray;
+  @include padding(.25,2,0,2);
+  @include translateY(-50%);
+  @include font-size(1);
+  a {color: $tan;
+    &:hover {
+      color: $darkred;
+      @include transition(.15s ease-in-out);
+      }
+    }
+  ul {
+    list-style-type: none;
+    line-height:1.85rem;
+    text-align: center;
+    @include padding(0,0,0,0);
+    }
+  }
+
+  header {
+    position: relative;
+    display: block;
+    width: 100%;
+    background: $darkred;
+    color: $white;
+    height: 8rem;
+    max-height:8rem;
+    font-family: $sans;
+    nav, nav ul, nav ul li {
+      margin: 0;
+      padding: 0;
+      }
+      nav {
+        position: absolute;
+        top: 50%; right: 7rem;
+        @include translateY(-50%)
+          ul li {
+            list-style-type: none;
+            display: inline-block;
+            margin-right: 2rem;
+            &last {
+              margin:0;
+            }
+          a {
+            @include font-size(1.75)
+            line-height: normal;
+            color: $white;
+            &:hover {color:$tan}
+        }
+      }
+    }
+  }
+
+//FOOTER
+footer {
+  position: relative;
+  float:left;
+  clear:both;
+  width: 100%;
+  background: $darkgray;
+  color: $lightgray;
+  min-height:6rem;
+  font-family: $sans;
+  bottom: 0;
+  @include margin(3,0,0,0);
+	padding: 1rem 0 3rem 0;
+	.footer_column {
+		float: left;
+		display: block;
+	}
+	.footer-logo {
+		margin: 0 2rem 0 0;
+		height: 50px;
+		width: auto;
+		transition: ease .25s;
+		&:hover { opacity: .7;}
+	}
+  .copyright {
+		width: 50%;
+		margin: 3rem auto;
+    p {text-align: left; @include font-size(1.25);}
+    }
+}
+
+
+//LIST SWITCH
+
+.switch {
+  display: inline-block;
+  height: 4.25rem;
+  position: relative;
+  width: 100%;
+}
+
+.switch input {
+  display:none;
+}
+
+input:checked + .slide {
+  background-color: $darkgray;
+  color: $darkred;
+  font-weight: bold;
+	&:before {transform: translateX(13.5rem);}
+}
+
+.slide.round {
+  background-color: $midgray;
+  bottom: 0; left: 0; right: 0; top: 0;
+  cursor: pointer;
+  position: absolute;
+  @include transition(.15s ease-in-out);
+	border-radius: 1rem;
+  &:before {
+		background-color: $white;
+    bottom: .5rem; left: .5rem;
+    font-family: $sans;
+    @include padding(1,0,0,1);
+    @include font-size(1);
+    height: 2.25rem; width: 5.5rem;
+    position: absolute;
+    transition: .4s;
+		border-radius: .75rem;
+  }
+}
+
+.slide.round.en:before {content: "LIST VIEW";}
+.slide.round.zh:before {content: "查看列表";}
+.slide.round.tw:before {content: "查看列表";}
